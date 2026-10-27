@@ -174,3 +174,5 @@ cython_debug/
 .pypirc
 
 workdir/
+# Media copied by the app for Phoenix traces at runtime
+uploaded_media/
