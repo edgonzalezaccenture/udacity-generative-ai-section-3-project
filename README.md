@@ -4,6 +4,25 @@ Proyecto de la sección 3 del curso **Generative AI** de Udacity.
 
 **Reto:** completar un sistema de moderación de contenido para el servicio al cliente de ACME Enterprise. Un agente en formación chatea con un cliente enfadado simulado por un LLM, y cada mensaje, imagen, video o audio que envía pasa antes por cuatro agentes de moderación con Google Gemini. Estos agentes detectan datos personales, tono poco profesional y medios perturbadores o de baja calidad, y devuelven resultados estructurados con Pydantic. Todo se sirve con Gradio (frontend), FastAPI (backend) y Arize Phoenix (trazado).
 
+## Contenido
+
+| Archivo | Qué es |
+|---|---|
+| [RUN_EVIDENCE.pdf](RUN_EVIDENCE.pdf) | **Evidencia de la entrega:** salida de las pruebas, salida de la evaluación de texto, captura de Gradio con un mensaje marcado y su justificación, y capturas de Phoenix con los spans (`conversation`, `chat_turn`, `moderate_text`, `moderate_image`, `llm_customer` y el atributo `feedback`). |
+| [multimodal_moderation/](multimodal_moderation/) | La aplicación. Los TODO completados están en `types/moderation_result.py`, `agents/text_agent.py`, `agents/image_agent.py` y `gradio_app.py`. |
+| [evals/](evals/) | Evaluaciones con Pydantic Evals; los TODO completados están en `evals/text/test_cases.py` y `evals/image/test_cases.py`. |
+| [tests/](tests/) | Pruebas proporcionadas, sin modificar. |
+| [env.example](env.example) | Plantilla del `.env`. El `.env` real no se sube porque contiene la clave. |
+
+**Ejecutar** (con `.env` creado a partir de `env.example`, ver [docs/02-configuracion-del-entorno.md](docs/02-configuracion-del-entorno.md)):
+
+```bash
+uv sync --dev
+uv run pytest tests/ -vv --ignore=tests/test_env_setup.py
+uv run evals/text/test_cases.py
+uv run multimodal-moderation
+```
+
 ## Documentación
 
 Documentación de la formación, en el mismo orden en que aparece en el curso:
